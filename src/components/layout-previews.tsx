@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import type { LayoutId } from "@/lib/layouts";
 
+/** Layout copy rule: one punchy sentence per line. Never join two sentences. */
+
 function Shot({ className = "" }: { className?: string }) {
   return (
     <div className={`relative overflow-hidden bg-[#d4d4d4] ${className}`}>
@@ -85,7 +87,9 @@ function Contents() {
         <div className="mb-6 h-10 border border-black" />
         <h2 className="text-3xl">WELCOME</h2>
         <p className="mt-4 max-w-sm text-sm leading-relaxed text-neutral-600">
-          A short welcome. This is sample text, ready to be replaced with the studio’s own line.
+          A short welcome.
+          <br />
+          Your own line goes here.
         </p>
         <Shot className="mt-8 h-40" />
       </section>
@@ -108,7 +112,11 @@ function ProjectCards() {
         </article>
       </section>
       <section className="bg-black p-6 text-white">
-        <p className="max-w-xs text-sm text-white/80">A dark page of project cards. Photos sit beside the names.</p>
+        <p className="max-w-xs text-sm text-white/80">
+          A dark page of project cards.
+          <br />
+          Photos sit beside the names.
+        </p>
         <div className="mt-6 grid gap-3">
           <div className="grid grid-cols-[1fr_1.2fr] bg-white text-black">
             <Shot className="h-24" />
@@ -183,7 +191,9 @@ function SplitWorks() {
       <section className="bg-[#1b1b1b] px-8 py-10 text-white">
         <h2 className="text-3xl tracking-wide">STUDIO</h2>
         <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/75">
-          A dark introduction. The work sits on the other half of the page.
+          A dark introduction.
+          <br />
+          The work sits opposite.
         </p>
         <div className="mt-8 grid grid-cols-2 gap-3">
           <Shot className="h-28" />
@@ -192,7 +202,11 @@ function SplitWorks() {
       </section>
       <section className="bg-[#f2f2f2] px-8 py-10 text-black">
         <h2 className="text-3xl">OUR WORK</h2>
-        <p className="mt-4 max-w-sm text-sm text-neutral-600">Two sample pictures and a short line under each.</p>
+        <p className="mt-4 max-w-sm text-sm text-neutral-600">
+          Two pictures.
+          <br />
+          A short line under each.
+        </p>
         <div className="mt-6 grid gap-4">
           <Shot className="h-28" />
           <Shot className="h-28" />
