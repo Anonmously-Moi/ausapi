@@ -16,7 +16,7 @@ function Shot({ className = "" }: { className?: string }) {
 function NightFolio() {
   return (
     <div className="grid min-h-[34rem] bg-white text-black md:grid-cols-2">
-      <section className="flex flex-col justify-between bg-black px-8 py-10 text-white">
+      <section className="flex flex-col bg-black px-8 py-10 text-white">
         <div className="h-10 w-px bg-white" />
         <div>
           <h2 className="text-3xl tracking-wide">SELECTED WORK</h2>
@@ -24,7 +24,7 @@ function NightFolio() {
             A minimal page for inspiration.
           </p>
         </div>
-        <div className="text-sm">
+        <div className="mt-10 text-sm">
           <p className="tracking-wide">Get in touch</p>
           <p className="mt-3 text-white/75">Phone · your number</p>
           <p className="text-white/75">Email · your address</p>
