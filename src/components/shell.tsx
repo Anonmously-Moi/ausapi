@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 const links = [
   { to: "/browse", label: "Browse" },
   { to: "/experiment", label: "Experiment" },
+  { to: "/demos", label: "Demos" },
   { to: "/about", label: "About" },
 ] as const;
 
