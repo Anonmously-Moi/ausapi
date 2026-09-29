@@ -12,9 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BrowseRouteImport } from './routes/browse'
+import { Route as DemosRouteImport } from './routes/demos'
 import { Route as ExperimentRouteImport } from './routes/experiment'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ApiIdRouteImport } from './routes/api.$id'
+import { Route as DemosIdRouteImport } from './routes/demos.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,6 +31,11 @@ const AboutRoute = AboutRouteImport.update({
 const BrowseRoute = BrowseRouteImport.update({
   id: '/browse',
   path: '/browse',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemosRoute = DemosRouteImport.update({
+  id: '/demos',
+  path: '/demos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExperimentRoute = ExperimentRouteImport.update({
@@ -46,51 +53,81 @@ const ApiIdRoute = ApiIdRouteImport.update({
   path: '/api/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemosIdRoute = DemosIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => DemosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/browse': typeof BrowseRoute
+  '/demos': typeof DemosRouteWithChildren
   '/experiment': typeof ExperimentRoute
   '/terms': typeof TermsRoute
   '/api/$id': typeof ApiIdRoute
+  '/demos/$id': typeof DemosIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/browse': typeof BrowseRoute
+  '/demos': typeof DemosRouteWithChildren
   '/experiment': typeof ExperimentRoute
   '/terms': typeof TermsRoute
   '/api/$id': typeof ApiIdRoute
+  '/demos/$id': typeof DemosIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/browse': typeof BrowseRoute
+  '/demos': typeof DemosRouteWithChildren
   '/experiment': typeof ExperimentRoute
   '/terms': typeof TermsRoute
   '/api/$id': typeof ApiIdRoute
+  '/demos/$id': typeof DemosIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/browse' | '/experiment' | '/terms' | '/api/$id'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/browse'
+    | '/demos'
+    | '/experiment'
+    | '/terms'
+    | '/api/$id'
+    | '/demos/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/browse' | '/experiment' | '/terms' | '/api/$id'
+  to:
+    | '/'
+    | '/about'
+    | '/browse'
+    | '/demos'
+    | '/experiment'
+    | '/terms'
+    | '/api/$id'
+    | '/demos/$id'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/browse'
+    | '/demos'
     | '/experiment'
     | '/terms'
     | '/api/$id'
+    | '/demos/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BrowseRoute: typeof BrowseRoute
+  DemosRoute: typeof DemosRouteWithChildren
   ExperimentRoute: typeof ExperimentRoute
   TermsRoute: typeof TermsRoute
   ApiIdRoute: typeof ApiIdRoute
@@ -119,6 +156,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BrowseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demos': {
+      id: '/demos'
+      path: '/demos'
+      fullPath: '/demos'
+      preLoaderRoute: typeof DemosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/experiment': {
       id: '/experiment'
       path: '/experiment'
@@ -140,13 +184,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demos/$id': {
+      id: '/demos/$id'
+      path: '/$id'
+      fullPath: '/demos/$id'
+      preLoaderRoute: typeof DemosIdRouteImport
+      parentRoute: typeof DemosRoute
+    }
   }
 }
+
+interface DemosRouteChildren {
+  DemosIdRoute: typeof DemosIdRoute
+}
+
+const DemosRouteChildren: DemosRouteChildren = {
+  DemosIdRoute: DemosIdRoute,
+}
+
+const DemosRouteWithChildren = DemosRoute._addFileChildren(DemosRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BrowseRoute: BrowseRoute,
+  DemosRoute: DemosRouteWithChildren,
   ExperimentRoute: ExperimentRoute,
   TermsRoute: TermsRoute,
   ApiIdRoute: ApiIdRoute,
