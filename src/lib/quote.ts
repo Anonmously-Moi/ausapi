@@ -33,3 +33,29 @@ export function quoteMailto(input: {
     .join("\n");
   return `mailto:${QUOTE_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
+
+export function layoutQuoteMailto(input: {
+  layout: string;
+  name: string;
+  email: string;
+  phone?: string;
+  notes?: string;
+}) {
+  const subject = `Quote request – ${input.layout} layout`;
+  const body = [
+    "New layout quote from ausapi",
+    "",
+    `Name: ${input.name}`,
+    `Email: ${input.email}`,
+    input.phone ? `Phone: ${input.phone}` : "",
+    "",
+    `Layout: ${input.layout}`,
+    "",
+    input.notes ? `Their notes:\n${input.notes}` : "",
+    "",
+    "Reply with a rough cost and what’s included.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+  return `mailto:${QUOTE_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
