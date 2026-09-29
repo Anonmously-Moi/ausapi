@@ -233,7 +233,7 @@ function Experiment() {
 
       {sent && (
         <p className="mt-4 text-sm text-accent-ink">
-          Request ready — check your email app, then we’ll reply with a rough cost.{{" "}}
+          Request ready — check your email app, then we’ll reply with a rough cost.{" "}
           <Link to="/browse" search={{ q: "", sheet: "All", band: "All" }} className="underline">
             Browse similar APIs
           </Link>
