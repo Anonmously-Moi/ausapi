@@ -15,7 +15,7 @@ function Home() {
       <section className="max-w-2xl pt-6 pb-10">
         <p className="text-sm font-medium tracking-wide text-accent">Directory</p>
         <h1 className="mt-3 font-display text-5xl leading-tight text-ink sm:text-6xl">
-          Australian APIs, organised.
+          Australian APIs, <span className="inline-block bg-white px-3 py-1">organised</span>.
         </h1>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">Browse free and paid APIs.</p>
         <p className="mt-2 max-w-xl text-lg leading-relaxed text-ink">
