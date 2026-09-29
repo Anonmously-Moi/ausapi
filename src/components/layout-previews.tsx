@@ -128,7 +128,7 @@ function BigTitle() {
       <section className="px-8 py-10">
         <h2 className="max-w-xs text-4xl leading-tight">YOUR BIG TITLE</h2>
         <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/75">
-          One strong line, then the work. Replace the title with the studio name.
+          have we got your attention?
         </p>
         <div className="mt-8 grid grid-cols-[1fr_1fr] gap-3">
           <div>
