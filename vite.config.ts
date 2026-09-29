@@ -175,6 +175,19 @@ export default defineConfig(({ command, isPreview }) => ({
             // manifest + head-tag middleware). Nitro v3 defaults serverDir to
             // false, so removing this silently unwires /?install=1 on deploys.
             serverDir: "./server",
+            routeRules: {
+              "/**": {
+                headers: {
+                  "x-content-type-options": "nosniff",
+                  "referrer-policy": "strict-origin-when-cross-origin",
+                  "x-frame-options": "DENY",
+                  "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+                  "strict-transport-security": "max-age=15552000",
+                  "content-security-policy":
+                    "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; upgrade-insecure-requests",
+                },
+              },
+            },
           }),
         ]
       : []),
