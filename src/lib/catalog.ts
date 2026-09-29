@@ -1,4 +1,12 @@
-import raw from "../data/apis.json";
+import p0 from "../data/parts/00.json";
+import p1 from "../data/parts/01.json";
+import p2 from "../data/parts/02.json";
+import p3 from "../data/parts/03.json";
+import p4 from "../data/parts/04.json";
+import p5 from "../data/parts/05.json";
+import p6 from "../data/parts/06.json";
+import p7 from "../data/parts/07.json";
+import p8 from "../data/parts/08.json";
 
 export type ApiEntry = {
   id: string;
@@ -19,6 +27,8 @@ export type ApiEntry = {
   verified: string;
   priceBand: "Free" | "Paid" | "Partner";
 };
+
+const raw = [...p0, ...p1, ...p2, ...p3, ...p4, ...p5, ...p6, ...p7, ...p8];
 
 export const apis = raw as ApiEntry[];
 
