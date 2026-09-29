@@ -21,7 +21,7 @@ function NightFolio() {
         <div>
           <h2 className="text-3xl tracking-wide">SELECTED WORK</h2>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/80">
-            A quiet first page for a studio. Swap this sentence for a real introduction.
+            A minimal page for inspiration.
           </p>
         </div>
         <div className="text-sm">
