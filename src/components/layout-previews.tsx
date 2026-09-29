@@ -158,7 +158,7 @@ function StudioGrid() {
           <p className="mt-4 max-w-xs text-sm text-white/70">
             Sample text under the title.
             <br />
-            The pictures carry the page.
+            The pictures tell the real story.
           </p>
         </div>
       </section>
