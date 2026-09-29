@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Shell } from "@/components/shell";
 import { getApi } from "@/lib/catalog";
+import { externalHttpsUrl } from "@/lib/safe-url";
 import { addSlot } from "@/lib/slots";
 
 export const Route = createFileRoute("/api/$id")({
@@ -23,7 +24,7 @@ function Detail() {
     );
   }
 
-  const docs = api.docs || api.portal || api.website;
+  const docs = externalHttpsUrl(api.docs || api.portal || api.website);
 
   return (
     <Shell>
@@ -49,12 +50,12 @@ function Detail() {
         <Field label="Last verified" value={api.verified} />
       </dl>
 
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mt-8 flex flex-wrap items-center gap-3">
         {docs && (
           <a
-            href={docs}
+            href={docs.href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex h-12 items-center rounded-full bg-poppy px-6 font-medium text-surface"
           >
             Open documentation
@@ -71,6 +72,9 @@ function Detail() {
           Add to Experiment
         </button>
       </div>
+      {docs && (
+        <p className="mt-3 text-xs text-muted">Leaves this site and opens {docs.host}</p>
+      )}
     </Shell>
   );
 }
