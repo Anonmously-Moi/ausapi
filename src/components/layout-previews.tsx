@@ -155,7 +155,11 @@ function StudioGrid() {
         <Shot className="h-40" />
         <div>
           <h2 className="max-w-xs text-4xl leading-tight">YOUR BIG TITLE</h2>
-          <p className="mt-4 max-w-xs text-sm text-white/70">Sample text under the title. The pictures carry the page.</p>
+          <p className="mt-4 max-w-xs text-sm text-white/70">
+            Sample text under the title.
+            <br />
+            The pictures carry the page.
+          </p>
         </div>
       </section>
       <section className="grid gap-3 bg-black p-6">
